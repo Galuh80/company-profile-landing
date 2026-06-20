@@ -400,38 +400,35 @@ button, input, textarea, select {
 }
 .clients__label {
   text-align: center;
-  font-size: 12px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--text-muted);
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: normal;
+  text-transform: none;
+  color: var(--blue);
   margin-bottom: 24px;
 }
-.marquee { overflow: hidden; }
+.marquee {
+  display: flex;
+  justify-content: center;
+}
 .marquee__track {
   display: flex;
-  gap: 80px;
-  width: max-content;
-  animation: marquee 20s linear infinite;
+  justify-content: center;
+  width: 100%;
 }
-.marquee__track span {
-  font-size: 15px;
-  font-weight: 700;
-  color: var(--text-muted);
-  opacity: 0.6;
-  white-space: nowrap;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
+.marquee__img {
+  height: 60px;
+  width: auto;
+  object-fit: contain;
+  flex-shrink: 0;
 }
-@keyframes marquee {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
 }
 
 /* ─── SERVICES ─────────────────────────────────────────────── */
 .services__grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 24px;
 }
 .service-card {
@@ -937,6 +934,7 @@ button, input, textarea, select {
   .testi__grid { grid-template-columns: 1fr 1fr; }
   .testi__card--featured { grid-column: 1 / -1; }
   .portfolio__card--wide { grid-template-columns: 1fr; }
+  .services__grid { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 768px) {
   .section { padding-block: 72px; }

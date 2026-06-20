@@ -64,13 +64,18 @@ const fadeObserver = new IntersectionObserver((entries) => {
       fadeObserver.unobserve(entry.target);
     }
   });
-}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+}, { threshold: 0.05, rootMargin: '0px 0px 0px 0px' });
 
 fadeTargets.forEach((el, i) => {
   el.classList.add('fade-in');
   el.style.transitionDelay = `${(i % 4) * 0.08}s`;
   fadeObserver.observe(el);
 });
+
+/* fallback: pastikan semua elemen visible setelah 1.5 detik */
+setTimeout(() => {
+  fadeTargets.forEach(el => el.classList.add('visible'));
+}, 1500);
 
 /* ─── FORM SUBMIT ──────────────────────────────────────────── */
 const form = document.getElementById('contactForm');
